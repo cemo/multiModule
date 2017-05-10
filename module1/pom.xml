@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>es.startuphero</groupId>
+    <artifactId>multiModule</artifactId>
+    <version>1.0.0</version>
+  </parent>
+
+  <artifactId>module1</artifactId>
+  <packaging>jar</packaging>
+  <name>${project.artifactId}</name>
+
+  <profiles>
+    <profile>
+      <id>already-installed</id>
+      <activation>
+        <file>
+          <exists>${env.HOME}/.m2/repository/es/startuphero/module1/1.0.0/module1-1.0.0.jar</exists>
+        </file>
+      </activation>
+      <properties>
+        <maven.install.skip>true</maven.install.skip>
+        <maven.resources.skip>true</maven.resources.skip>
+        <maven.test.skip>true</maven.test.skip>
+        <maven.main.skip>true</maven.main.skip>
+      </properties>
+    </profile>
+  </profiles>
+
+</project>
